@@ -1,7 +1,5 @@
 package com.wuzixuan.makelogfile.utils;
 
-import javafx.scene.input.DataFormat;
-
 import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -53,14 +51,16 @@ public class MakeData {
      * 生成随机时间字符串
      */
     public static String getTimeString(String timeDateType,boolean isNow){
-        Date date = null;
+        Date date = new Date();
         String s = "";
 
         if (isNow){
-            date = new Date();
+
         }else {
             Random random = new Random();
-            long aLong = (long) random.nextInt(1500000000)*200;
+            //86400000L为一天
+            //当前日期减去0～3650天
+            long aLong = date.getTime() - (long) ((long)random.nextInt(3650)* 86400000L);
             date = new Date(aLong);
         }
 
@@ -68,6 +68,7 @@ public class MakeData {
         try{
             s = simpleDateFormat.format(date);
         }catch (Exception e){
+            s = simpleDateFormat.format("yyyy-MM-dd");
             System.out.println("日期格式化错误");
         }
         return s;
@@ -76,9 +77,9 @@ public class MakeData {
     /**
      * 生成随机数字
      */
-    public static int getRandomInt(int bound){
+    public static int getRandomInt(int min,int bound){
         Random random = new Random();
-        int i = random.nextInt(bound);
+        int i = random.nextInt(bound)+min;
         return i;
     }
 

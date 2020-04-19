@@ -27,8 +27,8 @@ public class Make_ChannelMemo {
             s.append(MakeData.getRandomString(10) + "\t");
             s.append(MakeData.getRandomChineseString(5) + "\t");
             s.append(MakeData.getRandomString(10) + "\t");
-            s.append(MakeData.getRandomInt(10) + "\t");
-            s.append(MakeData.getRandomInt(10) + "\t");
+            s.append(MakeData.getRandomInt(0,10) + "\t");
+            s.append(MakeData.getRandomInt(0,10) + "\t");
             s.append(MakeData.getTimeString("yyyy-MM-dd",false) + "\t");
             s.append(MakeData.getRandomString(10) + "\t");
             s.append(MakeData.getRandomString(10) + "\t");
